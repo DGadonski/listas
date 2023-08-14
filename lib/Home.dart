@@ -46,6 +46,38 @@ class _HomeState extends State<Home> {
             return ListTile(
               title: Text('${_itens[indice]['titulo']}'),
               subtitle: Text('${_itens[indice]['descricao']}'),
+              onTap: (){
+                print('Um toque $indice');  
+                showDialog(
+                  context: context, 
+                  builder: (context){
+                    return AlertDialog(
+                      title: Text(_itens[indice]['titulo']),
+                      titleTextStyle: TextStyle(
+                        fontSize: 20,
+                        // color: 
+                      ),
+                      titlePadding: EdgeInsets.all(20),
+                      content: Text(_itens[indice]['descricao']),
+                      contentPadding: EdgeInsets.all(60),
+                      actions: [
+                        TextButton(
+                          onPressed: (){
+                            Navigator.pop(context);
+                          }, 
+                          child: Text('Sim')),
+                        TextButton(
+                          onPressed: (){
+                            Navigator.pop(context);
+                          }, 
+                          child: Text('Não')),
+                      ],
+                    );
+                  });              
+              } ,
+              // onLongPress: (){
+              //   print('Um toque longo');
+              // } ,
             );
           }),
       ),
